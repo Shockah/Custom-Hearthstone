@@ -1,10 +1,10 @@
-package pl.shockah.hs.game.lanterna.anim;
+package pl.shockah.hs.anim;
 
 import pl.shockah.hs.Player;
 import pl.shockah.hs.anim.AnimQueue;
 import pl.shockah.hs.units.MinionUnit;
 
-public class PlayMinionAnim extends Anim2 {
+public class PlayMinionAnim extends Anim {
 	public final Player player;
 	public final MinionUnit minion;
 	public final int position;
@@ -15,12 +15,11 @@ public class PlayMinionAnim extends Anim2 {
 		this.position = position;
 	}
 	
-	public boolean update(AnimQueue queue) {
+	public void finished(AnimQueue queue) {
 		player.hand.remove(minion.card);
 		if (position == -1)
 			player.minions.add(minion);
 		else
 			player.minions.add(position, minion);
-		return true;
 	}
 }

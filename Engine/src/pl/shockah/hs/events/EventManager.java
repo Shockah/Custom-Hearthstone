@@ -6,6 +6,8 @@ import pl.shockah.func.Func1;
 import pl.shockah.hs.Board;
 import pl.shockah.hs.Player;
 import pl.shockah.hs.cards.Card;
+import pl.shockah.hs.units.MinionUnit;
+import pl.shockah.hs.units.Unit;
 
 public class EventManager {
 	public static final EventHandler defaultHandler = new EventHandler();
@@ -33,6 +35,23 @@ public class EventManager {
 	}
 	public void postCardPlayed(Player player, Card card) {
 		for (EventHandler handler : handlers)
-			handler.preCardPlayed(player, card);
+			handler.postCardPlayed(player, card);
+	}
+	
+	public MinionSummonedAction preMinionSummoned(Player player, MinionUnit minion) {
+		return handleEnum(handlers, (handler) -> handler.preMinionSummoned(player, minion));
+	}
+	public void postMinionSummoned(Player player, MinionUnit minion) {
+		for (EventHandler handler : handlers)
+			handler.postMinionSummoned(player, minion);
+	}
+	public void onResolveMinionSummonEffects(MinionUnit minion) {
+		for (EventHandler handler : handlers)
+			handler.onResolveMinionSummonEffects(minion);
+	}
+	
+	public void onFindAttackTargets(Unit source, List<Unit> units) {
+		for (EventHandler handler : handlers)
+			handler.onFindAttackTargets(source, units);
 	}
 }

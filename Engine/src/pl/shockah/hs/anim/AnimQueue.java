@@ -4,11 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import pl.shockah.func.Func2;
+import pl.shockah.hs.Player;
+import pl.shockah.hs.units.MinionUnit;
 import com.github.zteve.smallcollections.SmallMap;
 
 public class AnimQueue {
 	public final List<Anim> queue = new ArrayList<>();
 	public final Map<String, Func2<AnimQueue, Object[], Anim>> animBuilders = new SmallMap<>();
+	
+	public void setup() {
+		animBuilders.put("PlayMinion", (queue, args) -> {
+			return new PlayMinionAnim((Player)args[0], (MinionUnit)args[1], (int)(Integer)args[2]);
+		});
+	}
 	
 	public void update() {
 		if (queue.isEmpty())

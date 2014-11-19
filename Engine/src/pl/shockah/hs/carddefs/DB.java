@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import pl.shockah.json.JSONObject;
 
-public class DB {
+public final class DB {
 	public static DB parse(JSONObject j) {
 		
 	}
@@ -16,4 +16,6 @@ public class DB {
 		this.tag = tag;
 		this.name = name;
 	}
+	
+	public void setup() {}
 }
