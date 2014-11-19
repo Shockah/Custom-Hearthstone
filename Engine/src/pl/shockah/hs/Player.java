@@ -3,6 +3,7 @@ package pl.shockah.hs;
 import java.util.ArrayList;
 import java.util.List;
 import pl.shockah.hs.cards.Card;
+import pl.shockah.hs.units.HeroUnit;
 import pl.shockah.hs.units.MinionUnit;
 
 public class Player {
@@ -16,6 +17,7 @@ public class Player {
 	
 	public final List<Card> deck, hand;
 	public final List<MinionUnit> minions;
+	public HeroUnit hero;
 	
 	public Player(Board board, int boardIndex) {
 		this(board, boardIndex, DEFAULT_DECK_SIZE, DEFAULT_HAND_SIZE, DEFAULT_MINIONS_SIZE);

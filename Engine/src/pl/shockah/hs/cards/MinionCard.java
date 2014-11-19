@@ -1,13 +1,13 @@
 package pl.shockah.hs.cards;
 
 import pl.shockah.hs.Player;
-import pl.shockah.hs.carddefs.CardDef;
+import pl.shockah.hs.carddefs.MinionCardDef;
 import pl.shockah.hs.units.MinionUnit;
 
 public class MinionCard extends Card {
 	public int attack = 0, health = 1, cost = 0;
 	
-	public MinionCard(CardDef def) {
+	public MinionCard(MinionCardDef def) {
 		super(def);
 	}
 	

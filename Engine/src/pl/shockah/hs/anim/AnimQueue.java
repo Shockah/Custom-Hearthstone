@@ -53,12 +53,23 @@ public class AnimQueue {
 		return animBuilders.get(name).f(this, args);
 	}
 	
+	public Anim buildAndQueueFirst(String name, Object... args) {
+		Anim anim = build(name, args);
+		queueFirst(anim);
+		return anim;
+	}
 	public Anim buildAndQueue(String name, Object... args) {
 		Anim anim = build(name, args);
 		queue(anim);
 		return anim;
 	}
 	
+	public void queueFirst(Anim anim) {
+		if (queue.isEmpty())
+			queue.add(anim);
+		else
+			queue.add(0, anim);
+	}
 	public void queue(Anim anim) {
 		queue.add(anim);
 	}

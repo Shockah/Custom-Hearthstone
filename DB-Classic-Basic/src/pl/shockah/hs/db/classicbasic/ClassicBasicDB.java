@@ -29,7 +29,7 @@ public class ClassicBasicDB extends DBCode {
 		registerBuff("Taunt", TauntBuff.class, (unit, args) -> {
 			return new TauntBuff(unit);
 		});
-		registerBuff("Divine Shield", DivineShieldBuff.class, (unit, args) -> {
+		registerBuff("DivineShield", DivineShieldBuff.class, (unit, args) -> {
 			return new DivineShieldBuff(unit);
 		});
 		

@@ -4,7 +4,7 @@ import pl.shockah.hs.cards.Card;
 import pl.shockah.hs.cards.MinionCard;
 
 public class MinionCardDef extends CardDef {
-	public int attack = 0, health = 1, cost = 0;
+	public int attack = 0, health = 1;
 	
 	public Card create() {
 		MinionCard card = new MinionCard(this);
