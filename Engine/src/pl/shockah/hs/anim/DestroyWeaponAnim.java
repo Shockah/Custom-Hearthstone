@@ -2,9 +2,7 @@ package pl.shockah.hs.anim;
 
 import pl.shockah.hs.Player;
 import pl.shockah.hs.Weapon;
-import pl.shockah.hs.units.Buff;
 import pl.shockah.hs.units.HeroUnit;
-import pl.shockah.hs.units.Unit;
 
 public class DestroyWeaponAnim extends Anim {
 	public final Weapon weapon;
