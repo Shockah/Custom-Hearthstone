@@ -1,6 +1,7 @@
 package pl.shockah.hs.events;
 
 import java.util.List;
+import pl.shockah.Box;
 import pl.shockah.hs.Player;
 import pl.shockah.hs.cards.Card;
 import pl.shockah.hs.units.MinionUnit;
@@ -15,4 +16,6 @@ public class EventHandler {
 	public void onResolveMinionSummonEffects(MinionUnit minion) {}
 	
 	public void onFindAttackTargets(Unit source, List<Unit> units) {}
+	public UnitAttackAction preUnitAttack(Unit source, Unit target) { return UnitAttackAction.Continue; }
+	public void preUnitDamaged(Unit unit, Box<Integer> damage) {}
 }

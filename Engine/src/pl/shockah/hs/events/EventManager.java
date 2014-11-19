@@ -2,6 +2,7 @@ package pl.shockah.hs.events;
 
 import java.util.ArrayList;
 import java.util.List;
+import pl.shockah.Box;
 import pl.shockah.func.Func1;
 import pl.shockah.hs.Board;
 import pl.shockah.hs.Player;
@@ -53,5 +54,12 @@ public class EventManager {
 	public void onFindAttackTargets(Unit source, List<Unit> units) {
 		for (EventHandler handler : handlers)
 			handler.onFindAttackTargets(source, units);
+	}
+	public UnitAttackAction preUnitAttack(Unit source, Unit target) {
+		return handleEnum(handlers, (handler) -> handler.preUnitAttack(source, target));
+	}
+	public void preUnitDamaged(Unit unit, Box<Integer> damage) {
+		for (EventHandler handler : handlers)
+			handler.preUnitDamaged(unit, damage);
 	}
 }

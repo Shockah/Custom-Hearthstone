@@ -12,4 +12,8 @@ public abstract class Buff extends EventHandler {
 	}
 	
 	public void applyStats() {}
+	
+	public void end() {
+		unit.buffs.remove(this);
+	}
 }

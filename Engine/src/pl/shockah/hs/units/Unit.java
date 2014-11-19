@@ -51,4 +51,15 @@ public class Unit {
 				return true;
 		return false;
 	}
+	
+	public void endBuff(Class<? extends Buff> cls) {
+		Buff buff = null;
+		for (Buff buff2 : buffs)
+			if (cls.isAssignableFrom(buff2.getClass())) {
+				buff = buff2;
+				break;
+			}
+		if (buff != null)
+			buff.end();
+	}
 }
