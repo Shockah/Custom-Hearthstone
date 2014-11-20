@@ -1,0 +1,811 @@
+{
+	"tag": "classicbasic",
+	"name": "Classic - Basic",
+	"dbclass": "pl.shockah.hs.db.classicbasic.ClassicBasicDB",
+
+	"damageTypes": [
+		{
+			"name": "Magic"
+		}
+	],
+
+	"heroClasses": [
+		{
+			"name": "Druid",
+			"power": {
+				"name": "Shapeshift",
+				"cost": 2,
+				">Cast": {
+					">Armor": {
+						"target": "me",
+						"armor": 1
+					},
+					">Buff": {
+						"target": "me",
+						"attack": 1,
+						"temporary": true
+					}
+				}
+			}
+		},
+		{
+			"name": "Hunter",
+			"power": {
+				"name": "Steady Shot",
+				"cost": 2,
+				">Cast": {
+					">Damage": {
+						"damage": 2,
+						"target": "enemy"
+					}
+				}
+			}
+		},
+		{
+			"name": "Mage",
+			"power": {
+				"name": "Fireblast",
+				"cost": 2,
+				">CastUnit": {
+					">Damage": {
+						"target": "^",
+						"damage": 1
+					}
+				}
+			}
+		},
+		{
+			"name": "Paladin",
+			"power": {
+				"name": "Reinforce",
+				"cost": 2,
+				">Cast": {
+					
+				}
+			}
+		},
+		{
+			"name": "Priest",
+			"power": {
+				"name": "Lesser Heal",
+				"cost": 2,
+				">CastUnit": {
+					">Heal": {
+						"target": "^",
+						"heal": 2
+					}
+				}
+			}
+		},
+		{
+			"name": "Rogue",
+			"power": {
+				"name": "Dagger Mastery",
+				"cost": 2,
+				">Cast": {
+					">EquipWeapon": {
+						"target": "me",
+						"weapon": ":Wicked Knife"
+					}
+				}
+			}
+		},
+		{
+			"name": "Shaman",
+			"power": {
+				"name": "Totemic Call",
+				"cost": 2,
+				">Cast": {
+
+				}
+			}
+		},
+		{
+			"name": "Warlock",
+			"power": {
+				"name": "Life Tap",
+				"cost": 2,
+				">Cast": {
+					">Damage": {
+						"target": "me",
+						"damage": 2
+					},
+					">Draw": "me"
+				}
+			}
+		},
+		{
+			"name": "Warrior",
+			"power": {
+				"name": "Armor Up!",
+				"cost": 2,
+				">Cast": {
+					">Armor": {
+						"target": "me",
+						"armor": 2
+					}
+				}
+			}
+		}
+	],
+
+	"heroes": [
+		{
+			"name": "Anduin Wrynn",
+			"class": ":Priest"
+		},
+		{
+			"name": "Garrosh Hellscream",
+			"class": ":Warrior"
+		},
+		{
+			"name": "Gul'dan",
+			"class": ":Warlock"
+		},
+		{
+			"name": "Jaina Proudmoore",
+			"class": ":Mage"
+		},
+		{
+			"name": "Malfurion Stormrage",
+			"class": ":Druid"
+		},
+		{
+			"name": "Rexxar",
+			"class": ":Hunter"
+		}
+		{
+			"name": "Thrall",
+			"class": ":Shaman"
+		},
+		{
+			"name": "Uther Lightbringer",
+			"class": ":Paladin"
+		},
+		{
+			"name": "Valeera Sanguinar",
+			"class": ":Rogue"
+		}
+	],
+
+	"minionTypes": [
+		{
+			"name": "Beast"
+		},
+		{
+			"name": "Murloc"
+		},
+		{
+			"name": "Totem"
+		}
+	],
+
+	"minions": [
+		{
+			"name": "Acidic Swamp Ooze",
+			"rarity": "Common",
+			"cost": 2,
+			"attack": 3,
+			"health": 2,
+			">Battlecry": {
+				">DestroyWeapon": "enemy"
+			}
+		},
+		{
+			"name": "Archmage",
+			"rarity": "Common",
+			"cost": 6,
+			"attack": 4,
+			"health": 7,
+			">ExtraDamage": ":Magic"
+		},
+		{
+			"name": "Bloodfen Raptor",
+			"rarity": "Common",
+			"type": ":Beast",
+			"cost": 2,
+			"attack": 3,
+			"health": 2
+		},
+		{
+			"name": "Bluegill Warrior",
+			"rarity": "Common",
+			"type": ":Murloc",
+			"cost": 2,
+			"attack": 2,
+			"health": 1,
+			">Charge": null
+		},
+		{
+			"name": "Boar",
+			"type": ":Beast",
+			"cost": 1,
+			"attack": 1,
+			"health": 1
+		},
+		{
+			"name": "Booty Bay Bodyguard",
+			"rarity": "Common",
+			"cost": 5,
+			"attack": 5,
+			"health": 4,
+			">Taunt": null
+		},
+		{
+			"name": "Boulderfist Ogre",
+			"rarity": "Free",
+			"cost": 6,
+			"attack": 6,
+			"health": 7
+		},
+		{
+			"name": "Chillwind Yeti",
+			"rarity": "Common",
+			"cost": 4,
+			"attack": 4,
+			"health": 5
+		},
+		{
+			"name": "Core Hound",
+			"rarity": "Common",
+			"type": ":Beast",
+			"cost": 7,
+			"attack": 9,
+			"health": 5
+		},
+		{
+			"name": "Dalaran Mage",
+			"rarity": "Common",
+			"cost": 3,
+			"attack": 1,
+			"health": 4,
+			">ExtraDamage": ":Magic"
+		},
+		{
+			"name": "Darkscale Healer",
+			"rarity": "Common",
+			"cost": 5,
+			"attack": 4,
+			"health": 5,
+			">Battlecry": {
+				">Heal": {
+					"target": "my",
+					"heal": 2
+				}
+			}
+		},
+		{
+			"name": "Dragonling Mechanic",
+			"rarity": "Common",
+			"cost": 4,
+			"attack": 2,
+			"health": 4,
+			">Battlecry": {
+				
+			}
+		},
+		{
+			"name": "Dread Infernal",
+			"rarity": "Common",
+			"class": ":Warlock",
+			"cost": 6,
+			"attack": 6,
+			"health": 6,
+			">Battlecry": {
+				">Damage": {
+					"target": "!this",
+					"damage": 1
+				}
+			}
+		},
+		{
+			"name": "Elven Archer",
+			"rarity": "Common",
+			"cost": 1,
+			"attack": 1,
+			"health": 1,
+			">BattlecryUnit": {
+				">Damage": {
+					"target": "^",
+					"damage": 1
+				}
+			}
+		},
+		{
+			"name": "Fire Elemental",
+			"rarity": "Common",
+			"class": ":Shaman",
+			"cost": 6,
+			"attack": 6,
+			"health": 5,
+			">BattlecryUnit": {
+				">Damage": {
+					"target": "^",
+					"damage": 3
+				}
+			}
+		},
+		{
+			"name": "Flametongue Totem",
+			"rarity": "Common",
+			"class": ":Shaman",
+			"type": ":Totem",
+			"cost": 2,
+			"attack": 0,
+			"health": 3,
+			">AuraAdjacent": {
+				"attack": 2
+			}
+		},
+		{
+			"name": "Frog",
+			"class": ":Shaman",
+			"type": ":Beast",
+			"cost": 0,
+			"attack": 0,
+			"health": 1,
+			">Taunt": null
+		},
+		{
+			"name": "Frostwolf Grunt",
+			"rarity": ":Common",
+			"cost": 2,
+			"attack": 2,
+			"health": 2,
+			">Taunt": null
+		},
+		{
+			"name": "Frostwolf Warlord",
+			"rarity": ":Common",
+			"cost": 5,
+			"attack": 4,
+			"health": 4,
+			">Battlecry": {
+				">AddAttack": {
+					"target": "this",
+					"attack": "myminions - 1"
+				},
+				">AddHealth": {
+					"target": "this",
+					"health": "myminions - 1"
+				}
+			}
+		},
+		{
+			"name": "Gnomish Inventor",
+			"rarity": ":Common",
+			"cost": 4,
+			"attack": 2,
+			"health": 4,
+			">Battlecry": {
+				">Draw": "me"
+			}
+		},
+		{
+			"name": "Goldshire Footman",
+			"rarity": ":Common",
+			"cost": 1,
+			"attack": 1,
+			"health": 2,
+			">Taunt": null
+		},
+		{
+			"name": "Grimscale Oracle",
+			"rarity": "Common",
+			"type": ":Murloc",
+			"cost": 1,
+			"attack": 1,
+			"health": 1,
+			">Aura": {
+				"conditions": "!this",
+				"attack": 1
+			}
+		},
+		{
+			"name": "Guardian of Kings",
+			"rarity": "Common",
+			"cost": 7,
+			"attack": 5,
+			"health": 6,
+			">Battlecry": {
+				">Heal": {
+					"target": "me",
+					"heal": 6
+				}
+			}
+		},
+		{
+			"name": "Gurubashi Berserker",
+			"rarity": "Common",
+			"cost": 5,
+			"attack": 2,
+			"health": 7,
+			">EnrageEach": {
+				">AddAttack": 3
+			}
+		}
+	],
+
+	"spells": [
+		{
+			"name": "Ancestral Healing",
+			"rarity": "Free",
+			"class": ":Shaman",
+			"cost": 0,
+			">CastMinion": {
+				">Heal": {
+					"target": "^",
+					"heal": "full"
+				},
+				">GiveTaunt": "^"
+			}
+		},
+		{
+			"name": "Animal Companion",
+			"rarity": "Common",
+			"class": ":Hunter",
+			"cost": 3,
+			">Cast": {
+				
+			}
+		},
+		{
+			"name": "Arcane Explosion",
+			"rarity": "Free",
+			"class": ":Mage",
+			"cost": 2,
+			">Cast": {
+				">Damage": {
+					"target": "enemyminions",
+					"damage": 1,
+					"type": ":Magic"
+				}
+			}
+		},
+		{
+			"name": "Arcane Intellect",
+			"rarity": "Free",
+			"class": ":Mage",
+			"cost": 3,
+			">Cast": {
+				">Repeat": {
+					"times": 2,
+					">Draw": "me"
+				}
+			}
+		},
+		{
+			"name": "Arcane Missiles",
+			"rarity": "Free",
+			"class": ":Mage",
+			"cost": 1,
+			">Cast": {
+				">DamageRandom": {
+					"target": "enemyminions",
+					"damage": 3,
+					"type": ":Magic"
+				}
+			}
+		},
+		{
+			"name": "Arcane Shot",
+			"rarity": "Free",
+			"class": ":Hunter",
+			"cost": 1,
+			">CastUnit": {
+				">Damage": {
+					"target": "^",
+					"damage": 2,
+					"type": ":Magic"
+				}
+			}
+		},
+		{
+			"name": "Assassinate",
+			"rarity": "Free",
+			"class": ":Rogue",
+			"cost": 5,
+			">CastUnit": {
+				"target": "enemyminion",
+				">DestroyUnit": "^"
+			}
+		},
+		{
+			"name": "Backstab",
+			"rarity": "Free",
+			"class": ":Rogue",
+			"cost": 0,
+			">CastUnit": {
+				"target": [
+					"enemyminion",
+					"!damaged"
+				],
+				">Damage": {
+					"target": "^",
+					"damage": 2,
+					"type": ":Magic"
+				}
+			}
+		},
+		{
+			"name": "Blessing of Kings",
+			"rarity": "Common",
+			"class": ":Paladin",
+			"cost": 4,
+			">CastMinion": {
+				">Buff": {
+					"target": "^",
+					"attack": 4,
+					"health": 4
+				}
+			}
+		},
+		{
+			"name": "Blessing of Might",
+			"rarity": "Free",
+			"class": ":Paladin",
+			"cost": 1,
+			">CastMinion": {
+				">Buff": {
+					"target": "^",
+					"attack": 3,
+				}
+			}
+		},
+		{
+			"name": "Bloodlust",
+			"rarity": "Common",
+			"class": ":Shaman",
+			"cost": 5,
+			">Cast": {
+				">Buff": {
+					"target": "myminions",
+					"damage": 3,
+					"temporary": true
+				}
+			}
+		},
+		{
+			"name": "Charge",
+			"rarity": "Free",
+			"class": ":Warrior",
+			"cost": 3,
+			">CastMinion": {
+				">Buff": {
+					"target": "^",
+					"attack": 2,
+				},
+				">GiveCharge": "^"
+			}
+		},
+		{
+			"name": "Claw",
+			"rarity": "Free",
+			"class": ":Druid",
+			"cost": 1,
+			">Cast": {
+				">Armor": {
+					"target": "me",
+					"armor": 2
+				},
+				">Buff": {
+					"target": "me",
+					"attack": 2,
+					"temporary": true
+				}
+			}
+		},
+		{
+			"name": "Cleave",
+			"rarity": "Common",
+			"class": ":Warrior",
+			"cost": 2,
+			">Cast": {
+				"conditions": "enemyminions >= 2",
+				">Damage": {
+					"target": "enemyminions",
+					"count": 2,
+					"damage": 2,
+					"type": ":Magic"
+				}
+			}
+		},
+		{
+			"name": "Consecration",
+			"rarity": "Common",
+			"class": ":Paladin",
+			"cost": 4,
+			">Cast": {
+				">Damage": {
+					"target": "enemies",
+					"damage": 2,
+					"type": ":Magic"
+				}
+			}
+		},
+		{
+			"name": "Corruption",
+			"rarity": "Common",
+			"class": ":Warlock",
+			"cost": 1,
+			">CastMinion": {
+				"target": "enemyminion",
+				">GiveCorruption": "^"
+			}
+		},
+		{
+			"name": "Deadly Poison",
+			"rarity": "Free",
+			"class": ":Rogue",
+			"cost": 1,
+			">Cast": {
+				"conditions": "me.hasweapon",
+				">BuffWeapon": {
+					"target": "my",
+					"damage": 2
+				}
+			}
+		},
+		{
+			"name": "Divine Spirit",
+			"rarity": "Common",
+			"class": ":Priest",
+			"cost": 2,
+			">CastMinion": {
+				">SetHealth": {
+					"target": "^",
+					"health": "^.health * 2"
+				}
+			}
+		},
+		{
+			"name": "Drain Life",
+			"rarity": "Free",
+			"class": ":Warlock",
+			"cost": 3,
+			">CastUnit": {
+				">Damage": {
+					"target": "^",
+					"damage": 2,
+					"type": ":Magic"
+				},
+				">Heal": {
+					"target": "me",
+					"heal": 2
+				}
+			}
+		},
+		{
+			"name": "Excess Mana",
+			"class": ":Druid",
+			"cost": 0,
+			">Cast": {
+				">Draw": "me"
+			}
+		},
+		{
+			"name": "Execute",
+			"rarity": "Free",
+			"class": ":Warrior",
+			"cost": 1,
+			">CastUnit": {
+				"target": [
+					"enemyminion",
+					"damaged"
+				],
+				">DestroyUnit": "^"
+			}
+		},
+		{
+			"name": "Fan of Knives",
+			"rarity": "Common",
+			"class": ":Rogue",
+			"cost": 3,
+			">Cast": {
+				">Damage": {
+					"target": "enemyminions",
+					"damage": 1,
+					"type": ":Magic"
+				},
+				">Draw": "me"
+			}
+		},
+		{
+			"name": "Fireball",
+			"rarity": "Free",
+			"class": ":Mage",
+			"cost": 4,
+			">CastUnit": {
+				">Damage": {
+					"target": "^",
+					"damage": 6,
+					"type": ":Magic"
+				}
+			}
+		},
+		{
+			"name": "Flamestrike",
+			"rarity": "Common",
+			"class": ":Mage",
+			"cost": 7,
+			">Cast": {
+				">Damage": {
+					"target": "enemyminions",
+					"damage": 4,
+					"type": ":Magic"
+				}
+			}
+		},
+		{
+			"name": "Frost Nova",
+			"rarity": "Common",
+			"class": ":Mage",
+			"cost": 3,
+			">Cast": {
+				">Freeze": "enemyminions"
+			}
+		},
+		{
+			"name": "Frost Shock",
+			"rarity": "Free",
+			"class": ":Shaman",
+			"cost": 1,
+			">CastUnit": {
+				">Damage": {
+					"target": "^",
+					"damage": 1,
+					"type": ":Magic"
+				},
+				">Freeze": "^"
+			}
+		},
+		{
+			"name": "Frostbolt",
+			"rarity": "Common",
+			"class": ":Mage",
+			"cost": 2,
+			">CastUnit": {
+				">Damage": {
+					"target": "^",
+					"damage": 3,
+					"type": ":Magic"
+				},
+				">Freeze": "^"
+			}
+		}
+	],
+
+	"weapons": [
+		{
+			"name": "Arcanite Reaper",
+			"rarity": "Common",
+			"class": ":Warrior",
+			"cost": 5,
+			"attack": 5,
+			"durability": 2
+		},
+		{
+			"name": "Assassin's Blade",
+			"rarity": "Common",
+			"class": ":Rogue",
+			"cost": 5,
+			"attack": 3,
+			"durability": 4
+		},
+		{
+			"name": "Wicked Knife",
+			"class": ":Rogue",
+			"cost": 2,
+			"attack": 1,
+			"durability": 2
+		},
+		{
+			"name": "Fiery War Axe",
+			"rarity": "Free",
+			"class": ":Warrior",
+			"cost": 2,
+			"attack": 3,
+			"durability": 2
+		}
+	]
+}
