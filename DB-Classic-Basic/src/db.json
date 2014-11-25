@@ -1498,7 +1498,7 @@
 			">CastUnit": {
 				">Conditional": [
 					{
-						"conditions": "me.hasunittype :Beast",
+						"conditions": "me.hasunitoftype :Beast",
 						">Damage": {
 							"target": "^",
 							"damage": 5,
