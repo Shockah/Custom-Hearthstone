@@ -9,6 +9,21 @@
 		}
 	],
 
+	"minionTypes": [
+		{
+			"name": "Beast"
+		},
+		{
+			"name": "Demon"
+		}
+		{
+			"name": "Murloc"
+		},
+		{
+			"name": "Totem"
+		}
+	],
+
 	"heroClasses": [
 		{
 			"name": "Druid",
@@ -60,7 +75,10 @@
 				"name": "Reinforce",
 				"cost": 2,
 				">Cast": {
-					
+					">Summon": {
+						"target": "me",
+						"minion": ":Silver Hand Recruit"
+					}
 				}
 			}
 		},
@@ -96,7 +114,36 @@
 				"name": "Totemic Call",
 				"cost": 2,
 				">Cast": {
-
+					">Weighted": [
+						{
+							"conditions": "!me.hasminion :Healing Totem",
+							">Summon": {
+								"target": "me",
+								"minion": ":Healing Totem"
+							}
+						},
+						{
+							"conditions": "!me.hasminion :Searing Totem",
+							">Summon": {
+								"target": "me",
+								"minion": ":Searing Totem"
+							}
+						},
+						{
+							"conditions": "!me.hasminion :Stoneclaw Totem",
+							">Summon": {
+								"target": "me",
+								"minion": ":Stoneclaw Totem"
+							}
+						},
+						{
+							"conditions": "!me.hasminion :Wrath of Air Totem",
+							">Summon": {
+								"target": "me",
+								"minion": ":Wrath of Air Totem"
+							}
+						}
+					]
 				}
 			}
 		},
@@ -110,7 +157,7 @@
 						"target": "me",
 						"damage": 2
 					},
-					">Draw": "me"
+					">DrawCard": "me"
 				}
 			}
 		},
@@ -165,18 +212,6 @@
 		{
 			"name": "Valeera Sanguinar",
 			"class": ":Rogue"
-		}
-	],
-
-	"minionTypes": [
-		{
-			"name": "Beast"
-		},
-		{
-			"name": "Murloc"
-		},
-		{
-			"name": "Totem"
 		}
 	],
 
@@ -281,7 +316,10 @@
 			"attack": 2,
 			"health": 4,
 			">Battlecry": {
-				
+				">Summon": {
+					"target": "me",
+					"minion": ":Mechanical Dragonling"
+				}
 			}
 		},
 		{
@@ -378,7 +416,7 @@
 			"attack": 2,
 			"health": 4,
 			">Battlecry": {
-				">Draw": "me"
+				">DrawCard": "me"
 			}
 		},
 		{
@@ -397,13 +435,14 @@
 			"attack": 1,
 			"health": 1,
 			">Aura": {
-				"conditions": "!this",
+				"conditions": ["!this", "isoftype :Murloc"],
 				"attack": 1
 			}
 		},
 		{
 			"name": "Guardian of Kings",
 			"rarity": "Common",
+			"class": ":Paladin",
 			"cost": 7,
 			"attack": 5,
 			"health": 6,
@@ -423,6 +462,514 @@
 			">EnrageEach": {
 				">AddAttack": 3
 			}
+		},
+		{
+			"name": "Healing Totem",
+			"class": ":Shaman",
+			"type": ":Totem",
+			"cost": 1,
+			"attack": 0,
+			"health": 2,
+			">EndTurn": {
+				"player": "me",
+				">Heal": {
+					"target": "myminions",
+					"heal": 1
+				}
+			}
+		},
+		{
+			"name": "Houndmaster",
+			"rarity": "Free",
+			"class": ":Hunter",
+			"cost": 4,
+			"attack": 4,
+			"health": 3,
+			">BattlecryUnit": {
+				">Buff": {
+					"target": "^",
+					"attack": 2,
+					"health": 2
+				},
+				">GiveTaunt": "^"
+			}
+		},
+		{
+			"name": "Huffer",
+			"class": ":Hunter",
+			"cost": 3,
+			"attack": 4,
+			"health": 2,
+			">Charge": null
+		},
+		{
+			"name": "Ironbark Protector",
+			"rarity": "Common",
+			"class": ":Druid",
+			"cost": 8,
+			"attack": 8,
+			"health": 8,
+			">Taunt": null
+		},
+		{
+			"name": "Ironforge Rifleman",
+			"rarity": "Common",
+			"cost": 3,
+			"attack": 2,
+			"health": 2,
+			">BattlecryUnit": {
+				">Damage": {
+					"target": "^",
+					"damage": 1
+				}
+			}
+		},
+		{
+			"name": "Ironfur Grizzly",
+			"rarity": "Common",
+			"type": ":Beast",
+			"cost": 3,
+			"attack": 3,
+			"health": 3,
+			">Taunt": null
+		},
+		{
+			"name": "Kobold Geomancer",
+			"rarity": "Common",
+			"cost": 2,
+			"attack": 2,
+			"health": 2,
+			">ExtraDamage": ":Magic"
+		},
+		{
+			"name": "Kor'kron Elite",
+			"rarity": "Common",
+			"class": ":Warrior",
+			"cost": 4,
+			"attack": 4,
+			"health": 3,
+			">Charge": null
+		},
+		{
+			"name": "Leokk",
+			"class": ":Hunter",
+			"type": ":Beast",
+			"cost": 3,
+			"attack": 2,
+			"health": 4,
+			">Aura": {
+				"conditions": "!this",
+				"target": "myminions",
+				"attack": 1
+			}
+		},
+		{
+			"name": "Lord of the Arena",
+			"rarity": "Common",
+			"cost": 6,
+			"attack": 6,
+			"health": 5,
+			">Taunt": null
+		},
+		{
+			"name": "Magma Rager",
+			"rarity": "Free",
+			"cost": 3,
+			"attack": 5,
+			"health": 1
+		},
+		{
+			"name": "Mechanical Dragonling",
+			"cost": 1,
+			"attack": 2,
+			"health": 1
+		},
+		{
+			"name": "Mirror Image Token",
+			"displayname": "Mirror Image",
+			"class": ":Mage",
+			"cost": 0,
+			"attack": 0,
+			"health": 2,
+			">Taunt": null
+		},
+		{
+			"name": "Misha",
+			"class": ":Hunter",
+			"type": ":Beast",
+			"cost": 3,
+			"attack": 4,
+			"health": 4,
+			">Taunt": null
+		},
+		{
+			"name": "Murloc Raider",
+			"rarity": "Free",
+			"type": ":Murloc",
+			"cost": 1,
+			"attack": 2,
+			"health": 1
+		},
+		{
+			"name": "Murloc Scout",
+			"type": ":Murloc",
+			"cost": 0,
+			"attack": 1,
+			"health": 1
+		},
+		{
+			"name": "Murloc Tidehunter",
+			"rarity": "Common",
+			"type": ":Murloc",
+			"cost": 2,
+			"attack": 2,
+			"health": 1,
+			">Battlecry": {
+				">Summon": {
+					"target": "me",
+					"minion": ":Murloc Scout"
+				}
+			}
+		},
+		{
+			"name": "Nightblade",
+			"rarity": "Free",
+			"cost": 5,
+			"attack": 4,
+			"health": 4,
+			">Battlecry": {
+				">Damage": {
+					"target": "enemy",
+					"damage": 3
+				}
+			}
+		},
+		{
+			"name": "Northshire Cleric",
+			"rarity": "Free",
+			"class": ":Priest",
+			"cost": 1,
+			"attack": 1,
+			"health": 3,
+			">OnHeal": {
+				"conditions": "isminion",
+				">DrawCard": "me"
+			}
+		},
+		{
+			"name": "Novice Engineer",
+			"rarity": "Free",
+			"cost": 2,
+			"attack": 1,
+			"health": 1,
+			">Battlecry": {
+				">DrawCard": "me"
+			}
+		},
+		{
+			"name": "Oasis Snapjaw",
+			"rarity": "Free",
+			"type": ":Beast",
+			"cost": 4,
+			"attack": 2,
+			"health": 7
+		},
+		{
+			"name": "Ogre Magi",
+			"rarity": "Common",
+			"cost": 4,
+			"attack": 4,
+			"health": 4,
+			">ExtraDamage": ":Magic"
+		},
+		{
+			"name": "Raid Leader",
+			"rarity": "Free",
+			"cost": 3,
+			"attack": 2,
+			"health": 2,
+			">Aura": {
+				"conditions": "!this",
+				"target": "myminions",
+				"attack": 1
+			}
+		},
+		{
+			"name": "Razorfen Hunter",
+			"rarity": "Common",
+			"cost": 3,
+			"attack": 2,
+			"health": 3,
+			">Battlecry": {
+				">Summon": {
+					"target": "me",
+					"minion": ":Boar"
+				}
+			}
+		},
+		{
+			"name": "Reckless Rocketeer",
+			"rarity": "Free",
+			"cost": 6,
+			"attack": 5,
+			"health": 2,
+			">Charge": null
+		},
+		{
+			"name": "River Crocolisk",
+			"rarity": "Free",
+			"type": ":Beast",
+			"cost": 2,
+			"attack": 2,
+			"health": 3,
+		},
+		{
+			"name": "Searing Totem",
+			"class": ":Shaman",
+			"type": ":Totem",
+			"cost": 1,
+			"attack": 1,
+			"health": 1,
+		},
+		{
+			"name": "Sen'jin Shieldmasta",
+			"rarity": "Free",
+			"cost": 4,
+			"attack": 3,
+			"health": 5,
+			">Taunt": null
+		},
+		{
+			"name": "Shattered Sun Cleric",
+			"rarity": "Common",
+			"cost": 3,
+			"attack": 3,
+			"health": 2,
+			">BattlecryMinion": {
+				"conditions": "myminion",
+				">Buff": {
+					"target": "^",
+					"attack": 1,
+					"health": 1
+				}
+			}
+		},
+		{
+			"name": "Sheep",
+			"class": ":Mage",
+			"type": ":Beast",
+			"cost": 0,
+			"attack": 1,
+			"health": 1
+		},
+		{
+			"name": "Silver Hand Recruit",
+			"class": ":Paladin",
+			"cost": 1,
+			"attack": 1,
+			"health": 1
+		},
+		{
+			"name": "Silverback Patriarch",
+			"rarity": "Common",
+			"type": ":Beast",
+			"cost": 3,
+			"attack": 1,
+			"health": 4,
+			">Taunt": null
+		},
+		{
+			"name": "Skeleton",
+			"cost": 1,
+			"attack": 1,
+			"health": 1
+		},
+		{
+			"name": "Starving Buzzard",
+			"rarity": "Common",
+			"class": ":Hunter",
+			"type": ":Beast",
+			"cost": 5,
+			"attack": 3,
+			"health": 2,
+			">OnSummon": {
+				"conditions": ["myminion", "isoftype :Beast"],
+				">DrawCard": "me"
+			}
+		},
+		{
+			"name": "Stoneclaw Totem",
+			"class": ":Shaman",
+			"type": ":Totem",
+			"cost": 1,
+			"attack": 0,
+			"health": 2,
+			">Taunt": null
+		},
+		{
+			"name": "Stonetusk Boar",
+			"rarity": "Free",
+			"type": ":Beast",
+			"cost": 1,
+			"attack": 1,
+			"health": 1,
+			">Charge": null
+		},
+		{
+			"name": "Stormpike Commando",
+			"rarity": "Common",
+			"cost": 5,
+			"attack": 4,
+			"health": 2,
+			">BattlecryUnit": {
+				">Damage": {
+					"target": "^",
+					"damage": 2
+				}
+			}
+		},
+		{
+			"name": "Stormwind Champion",
+			"rarity": "Common",
+			"cost": 7,
+			"attack": 6,
+			"health": 6,
+			">Aura": {
+				"conditions": "!this",
+				"target": "myminions",
+				"attack": 1,
+				"health": 1
+			}
+		},
+		{
+			"name": "Stormwind Knight",
+			"rarity": "Common",
+			"cost": 4,
+			"attack": 2,
+			"health": 5,
+			">Charge": null
+		},
+		{
+			"name": "Succubus",
+			"rarity": "Free",
+			"class": ":Warlock",
+			"cost": 2,
+			"attack": 4,
+			"health": 3,
+			">Battlecry": {
+				">DiscardCard": "me"
+			}
+		},
+		{
+			"name": "Timber Wolf",
+			"rarity": "Free",
+			"class": ":Hunter",
+			"type": ":Beast",
+			"cost": 1,
+			"attack": 1,
+			"health": 1,
+			">Aura": {
+				"conditions": ["!this", "isoftype :Beast"],
+				"target": "myminions",
+				"attack": 1
+			}
+		},
+		{
+			"name": "Tundra Rhino",
+			"rarity": "Common",
+			"class": ":Hunter",
+			"type": ":Beast",
+			"cost": 5,
+			"attack": 2,
+			"health": 5,
+			">Aura": {
+				"conditions": "isoftype :Beast",
+				"target": "myminions",
+				">GiveCharge": {
+					"target": "^",
+					"temporary": true
+				}
+			}
+		},
+		{
+			"name": "Voidwalker",
+			"rarity": "Free",
+			"class": ":Warlock",
+			"type": ":Demon",
+			"cost": 1,
+			"attack": 1,
+			"health": 3,
+			">Taunt": null
+		},
+		{
+			"name": "Voodoo Doctor",
+			"rarity": "Free",
+			"cost": 1,
+			"attack": 2,
+			"health": 1,
+			">BattlecryUnit": {
+				">Heal": {
+					"target": "^",
+					"heal": 2
+				}
+			}
+		},
+		{
+			"name": "War Golem",
+			"rarity": "Common",
+			"cost": 7,
+			"attack": 7,
+			"health": 7
+		},
+		{
+			"name": "Warsong Commander",
+			"rarity": "Free",
+			"class": ":Warrior",
+			"cost": 3,
+			"attack": 2,
+			"health": 3,
+			">OnSummon": {
+				"conditions": ["myminion", "^.attack <= 3"],
+				">GiveCharge": "^"
+			}
+		},
+		{
+			"name": "Water Elemental",
+			"rarity": "Common",
+			"cost": 4,
+			"attack": 3,
+			"health": 6,
+			">PostDamage": {
+				">Freeze": "^"
+			}
+		},
+		{
+			"name": "Windspeaker",
+			"rarity": "Common",
+			"cost": 4,
+			"attack": 3,
+			"health": 3,
+			">BattlecryMinion": {
+				"conditions": "myminion",
+				">GiveWindfury": "^"
+			}
+		},
+		{
+			"name": "Wolfrider",
+			"rarity": "Free",
+			"cost": 3,
+			"attack": 3,
+			"health": 1,
+			">Charge": null
+		},
+		{
+			"name": "Wrath of Air Totem",
+			"class": ":Shaman",
+			"type": ":Totem",
+			"cost": 1,
+			"attack": 0,
+			"health": 2,
+			">ExtraDamage": ":Magic"
 		}
 	],
 
@@ -446,7 +993,26 @@
 			"class": ":Hunter",
 			"cost": 3,
 			">Cast": {
-				
+				">Weighted": [
+					{
+						">Summon": {
+							"target": "me",
+							"minion": ":Huffer"
+						}
+					},
+					{
+						">Summon": {
+							"target": "me",
+							"minion": ":Leokk"
+						}
+					},
+					{
+						">Summon": {
+							"target": "me",
+							"minion": ":Misha"
+						}
+					}
+				]
 			}
 		},
 		{
@@ -470,7 +1036,7 @@
 			">Cast": {
 				">Repeat": {
 					"times": 2,
-					">Draw": "me"
+					">DrawCard": "me"
 				}
 			}
 		},
@@ -680,7 +1246,7 @@
 			"class": ":Druid",
 			"cost": 0,
 			">Cast": {
-				">Draw": "me"
+				">DrawCard": "me"
 			}
 		},
 		{
@@ -707,7 +1273,7 @@
 					"damage": 1,
 					"type": ":Magic"
 				},
-				">Draw": "me"
+				">DrawCard": "me"
 			}
 		},
 		{
@@ -772,6 +1338,568 @@
 				},
 				">Freeze": "^"
 			}
+		},
+		{
+			"name": "Hammer of Wrath",
+			"rarity": "Free",
+			"class": ":Paladin",
+			"cost": 4,
+			">CastUnit": {
+				">Damage": {
+					"target": "^",
+					"damage": 3,
+					"type": ":Magic"
+				},
+				">DrawCard": "me"
+			}
+		},
+		{
+			"name": "Hand of Protection",
+			"rarity": "Free",
+			"class": ":Paladin",
+			"cost": 1,
+			">CastUnit": {
+				">GiveDivineShield": "^"
+			}
+		},
+		{
+			"name": "Healing Touch",
+			"rarity": "Free",
+			"class": ":Druid",
+			"cost": 3,
+			">CastUnit": {
+				">Heal": {
+					"target": "^",
+					"heal": 8
+				}
+			}
+		},
+		{
+			"name": "Hellfire",
+			"rarity": "Free",
+			"class": ":Warlock",
+			"cost": 4,
+			">Cast": {
+				">Damage": {
+					"target": "all",
+					"damage": 3,
+					"type": ":Magic"
+				}
+			}
+		},
+		{
+			"name": "Heroic Strike",
+			"rarity": "Free",
+			"class": ":Warrior",
+			"cost": 2,
+			">Cast": {
+				">Buff": {
+					"target": "me",
+					"attack": 4,
+					"temporary": true
+				}
+			}
+		},
+		{
+			"name": "Hex",
+			"rarity": "Free",
+			"class": ":Shaman",
+			"cost": 3,
+			">CastMinion": {
+				">Transform": {
+					"target": "^",
+					"into": ":Frog"
+				}
+			}
+		},
+		{
+			"name": "Holy Light",
+			"rarity": "Free",
+			"class": ":Paladin",
+			"cost": 2,
+			">CastUnit": {
+				">Heal": {
+					"target": "^",
+					"heal": 6
+				}
+			}
+		},
+		{
+			"name": "Holy Nova",
+			"rarity": "Common",
+			"class": ":Priest",
+			"cost": 5,
+			">Cast": {
+				">Damage": {
+					"target": "enemies",
+					"damage": 2,
+					"type": ":Magic"
+				},
+				">Heal": {
+					"target": "my",
+					"heal": 2
+				}
+			}
+		},
+		{
+			"name": "Holy Smite",
+			"rarity": "Free",
+			"class": ":Priest",
+			"cost": 1,
+			">CastUnit": {
+				">Damage": {
+					"target": "^",
+					"damage": 2,
+					"type": ":Magic"
+				}
+			}
+		},
+		{
+			"name": "Humility",
+			"rarity": "Common",
+			"class": ":Paladin",
+			"cost": 1,
+			">CastMinion": {
+				">SetAttack": {
+					"target": "^",
+					"attack": 1
+				}
+			}
+		},
+		{
+			"name": "Hunter's Mark",
+			"rarity": "Common",
+			"class": ":Hunter",
+			"cost": 0,
+			">CastMinion": {
+				">SetHealth": {
+					"target": "^",
+					"health": 1
+				}
+			}
+		},
+		{
+			"name": "Innervate",
+			"rarity": "Free",
+			"class": ":Druid",
+			"cost": 0,
+			">Cast": {
+				">GainMana": {
+					"target": "me",
+					"mana": 2
+				}
+			}
+		},
+		{
+			"name": "Kill Command",
+			"rarity": "Common",
+			"class": ":Hunter",
+			"cost": 3,
+			">CastUnit": {
+				">Conditional": [
+					{
+						"conditions": "me.hasunittype :Beast",
+						">Damage": {
+							"target": "^",
+							"damage": 5,
+							"type": ":Magic"
+						}
+					},
+					{
+						">Damage": {
+							"target": "^",
+							"damage": 3,
+							"type": ":Magic"
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "Mark of the Wild",
+			"rarity": "Free",
+			"class": ":Druid",
+			"cost": 2,
+			">CastMinion": {
+				">GiveTaunt": "^",
+				">Buff": {
+					"target": "^",
+					"attack": 2,
+					"health": 2
+				}
+			}
+		},
+		{
+			"name": "Mind Blast",
+			"rarity": "Free",
+			"class": ":Priest",
+			"cost": 2,
+			">Cast": {
+				">Damage": {
+					"target": "enemy",
+					"damage": 5,
+					"type": ":Magic"
+				}
+			}
+		},
+		{
+			"name": "Mind Control",
+			"rarity": "Common",
+			"class": ":Priest",
+			"cost": 10,
+			">CastMinion": {
+				">TakeControl": "^"
+			}
+		},
+		{
+			"name": "Mind Vision",
+			"rarity": "Common",
+			"class": ":Priest",
+			"cost": 1,
+			">Cast": {
+				">GiveCard": {
+					"target": "me",
+					"cardfrom": "enemy.deck"
+				}
+			}
+		},
+		{
+			"name": "Mirror Image",
+			"rarity": "Common",
+			"class": ":Mage",
+			"cost": 1,
+			">Cast": {
+				">Repeat": {
+					"times": 2,
+					">Summon": {
+						"target": "me",
+						"minion": ":Mirror Image Token"
+					}
+				}
+			}
+		},
+		{
+			"name": "Moonfire",
+			"rarity": "Common",
+			"class": ":Druid",
+			"cost": 0,
+			">CastUnit": {
+				">Damage": {
+					"target": "^",
+					"damage": 1,
+					"type": ":Magic"
+				}
+			}
+		},
+		{
+			"name": "Mortal Coil",
+			"rarity": "Common",
+			"class": ":Warlock",
+			"cost": 1,
+			">CastUnit": {
+				">Damage": {
+					"target": "^",
+					"damage": 1,
+					"type": ":Magic",
+					">Death": {
+						">DrawCard": "me"
+					}
+				}
+			}
+		},
+		{
+			"name": "Multi-Shot",
+			"rarity": "Common",
+			"class": ":Hunter",
+			"cost": 4,
+			">Cast": {
+				"conditions": "enemyminions >= 2",
+				">Damage": {
+					"target": "enemyminions",
+					"count": 2,
+					"damage": 3,
+					"type": ":Magic"
+				}
+			}
+		},
+		{
+			"name": "Polymorph",
+			"rarity": "Free",
+			"class": ":Mage",
+			"cost": 4,
+			">CastMinion": {
+				">Transform": {
+					"target": "^",
+					"into": ":Sheep"
+				}
+			}
+		},
+		{
+			"name": "Power Word: Shield",
+			"rarity": "Free",
+			"class": ":Priest",
+			"cost": 1,
+			">CastMinion": {
+				">Buff": {
+					"target": "^",
+					"health": 2
+				},
+				">DrawCard": "me"
+			}
+		},
+		{
+			"name": "Rockbiter Weapon",
+			"rarity": "Free",
+			"class": ":Shaman",
+			"cost": 1,
+			">CastUnit": {
+				">Buff": {
+					"target": "^",
+					"attack": 3,
+					"temporary": true
+				}
+			}
+		},
+		{
+			"name": "Sacrificial Pact",
+			"rarity": "Common",
+			"class": ":Warlock",
+			"cost": 0,
+			">CastUnit": {
+				"conditions": "isoftype :Demon",
+				">DestroyUnit": "^",
+				">Heal": {
+					"target": "me",
+					"heal": 5
+				}
+			}
+		},
+		{
+			"name": "Sap",
+			"rarity": "Free",
+			"class": ":Rogue",
+			"cost": 2,
+			">CastMinion": {
+				"conditions": "enemyminion",
+				">ReturnCard": "^"
+			}
+		},
+		{
+			"name": "Savage Roar",
+			"rarity": "Common",
+			"class": ":Druid",
+			"cost": 3,
+			">Cast": {
+				">Buff": {
+					"target": "my",
+					"damage": 2,
+					"temporary": true
+				}
+			}
+		},
+		{
+			"name": "Shadow Bolt",
+			"rarity": "Free",
+			"class": ":Warlock",
+			"cost": 3,
+			">CastMinion": {
+				">Damage": {
+					"target": "^",
+					"damage": 4,
+					"type": ":Magic"
+				}
+			}
+		},
+		{
+			"name": "Shadow Word: Death",
+			"rarity": "Common",
+			"class": ":Priest",
+			"cost": 3,
+			">CastMinion": {
+				"conditions": "^.attack >= 5",
+				">DestroyUnit": "^"
+			}
+		},
+		{
+			"name": "Shadow Word: Pain",
+			"rarity": "Free",
+			"class": ":Priest",
+			"cost": 2,
+			">CastMinion": {
+				"conditions": "^.attack <= 3",
+				">DestroyUnit": "^"
+			}
+		},
+		{
+			"name": "Shield Block",
+			"rarity": "Common",
+			"class": ":Warrior",
+			"cost": 3,
+			">Cast": {
+				">Armor": {
+					"target": "me",
+					"armor": 5
+				},
+				">DrawCard": "me"
+			}
+		},
+		{
+			"name": "Shiv",
+			"rarity": "Common",
+			"class": ":Rogue",
+			"cost": 2,
+			">CastUnit": {
+				">Damage": {
+					"target": "^",
+					"damage": 1,
+					"type": ":Magic"
+				},
+				">DrawCard": "me"
+			}
+		},
+		{
+			"name": "Sinister Strike",
+			"rarity": "Free",
+			"class": ":Rogue",
+			"cost": 1,
+			">Cast": {
+				">Damage": {
+					"target": "enemy",
+					"damage": 3,
+					"type": ":Magic"
+				}
+			}
+		},
+		{
+			"name": "Soulfire",
+			"rarity": "Free",
+			"class": ":Warlock",
+			"cost": 0,
+			">CastUnit": {
+				">Damage": {
+					"target": "^",
+					"damage": 4,
+					"type": ":Magic"
+				},
+				">DiscardCard": "me"
+			}
+		},
+		{
+			"name": "Sprint",
+			"rarity": "Common",
+			"class": ":Rogue",
+			"cost": 7,
+			">Cast": {
+				">Repeat": {
+					"times": 4,
+					">DrawCard": "me"
+				}
+			}
+		},
+		{
+			"name": "Starfire",
+			"rarity": "Common",
+			"class": ":Druid",
+			"cost": 6,
+			">CastUnit": {
+				">Damage": {
+					"target": "^",
+					"damage": 5,
+					"type": ":Magic"
+				},
+				">DrawCard": "me"
+			}
+		},
+		{
+			"name": "Swipe",
+			"rarity": "Common",
+			"class": ":Druid",
+			"cost": 4,
+			">CastUnit": {
+				">Damage": {
+					"target": "^",
+					"damage": 4,
+					"type": ":Magic"
+				},
+				">Damage #2": {
+					"conditions": "!^",
+					"target": "enemies",
+					"damage": 1,
+					"type": ":Magic"
+				}
+			}
+		},
+		{
+			"name": "The Coin",
+			"cost": 0,
+			">Cast": {
+				">GainMana": {
+					"target": "me",
+					"mana": 1
+				}
+			}
+		},
+		{
+			"name": "Totemic Might",
+			"rarity": "Common",
+			"class": ":Shaman",
+			"cost": 0,
+			">Cast": {
+				">Buff": {
+					"target": "myminions",
+					"conditions": "isoftype :Totem",
+					"health": 2,
+				}
+			}
+		},
+		{
+			"name": "Tracking",
+			"rarity": "Free",
+			"class": ":Hunter",
+			"cost": 1,
+			">Cast": {
+				
+			}
+		},
+		{
+			"name": "Vanish",
+			"rarity": "Common",
+			"class": ":Rogue",
+			"cost": 6,
+			">Cast": {
+				">ReturnCard": "minions"
+			}
+		},
+		{
+			"name": "Whirlwind",
+			"rarity": "Common",
+			"class": ":Warrior",
+			"cost": 1,
+			">Cast": {
+				">Damage": {
+					"target": "minions",
+					"damage": 1,
+					"type": ":Magic"
+				}
+			}
+		},
+		{
+			"name": "Wild Growth",
+			"rarity": "Free",
+			"class": ":Druid",
+			"cost": 2,
+			">Cast": {
+				">GainManaCrystal": "me"
+			}
+		},
+		{
+			"name": "Windfury",
+			"rarity": "Free",
+			"class": ":Shaman",
+			"cost": 2,
+			">CastMinion": {
+				">GiveWindfury": "^"
+			}
 		}
 	],
 
@@ -793,18 +1921,40 @@
 			"durability": 4
 		},
 		{
-			"name": "Wicked Knife",
-			"class": ":Rogue",
-			"cost": 2,
-			"attack": 1,
-			"durability": 2
-		},
-		{
 			"name": "Fiery War Axe",
 			"rarity": "Free",
 			"class": ":Warrior",
 			"cost": 2,
 			"attack": 3,
+			"durability": 2
+		},
+		{
+			"name": "Light's Justice",
+			"rarity": "Free",
+			"class": ":Paladin",
+			"cost": 1,
+			"attack": 1,
+			"durability": 4
+		},
+		{
+			"name": "Truesilver Champion",
+			"rarity": "Common",
+			"class": ":Paladin",
+			"cost": 4,
+			"attack": 4,
+			"durability": 2,
+			">OnAttack": {
+				">Heal": {
+					"target": "me",
+					"heal": 2
+				}
+			}
+		},
+		{
+			"name": "Wicked Knife",
+			"class": ":Rogue",
+			"cost": 2,
+			"attack": 1,
 			"durability": 2
 		}
 	]
